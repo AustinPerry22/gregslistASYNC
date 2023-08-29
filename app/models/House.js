@@ -13,6 +13,6 @@ export class House {
     }
 
     get template() {
-        return `${this.id}, ${this.price}, ${this.description}`
+        return `${this.price}, ${this.description}`
     }
 }

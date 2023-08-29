@@ -43,10 +43,55 @@
   <!-- SECTION -->
   <main>
 
-    <!-- NOTE after filling in the env.js... come and remove this from HTML -->
-    <!-- <section id="auth-template"> -->
-    <!-- TODO REMOVE THE AUTH TEMPLATE ONCE YOU VERIFY YOUR AUTH SETTINGS -->
-    <!-- <div class="container-fluid">
+
+    <form class="row p-2" onsubmit="app.HousesController.createHouse()">
+
+      <div class="form-floating mb-3 col-4">
+        <input required type="number" class="form-control" id="bedrooms" name="bedrooms" placeholder="0">
+        <label for="bedrooms">Bedrooms:</label>
+      </div>
+
+      <div class="form-floating mb-3 col-4">
+        <input required type="number" class="form-control" id="bedrooms" name="bathrooms" placeholder="0">
+        <label for="bathrooms">Bathrooms:</label>
+      </div>
+
+      <div class="form-floating mb-3 col-4">
+        <input required type="number" class="form-control" id="levels" name="levels" placeholder="0">
+        <label for="levels">Levels:</label>
+      </div>
+
+      <div class="form-floating mb-3 col-6">
+        <input required type="number" class="form-control" max="10000000" id="housePrice" name="price"
+          placeholder="House Price">
+        <label for="housePrice">House Price</label>
+      </div>
+
+      <div class="form-floating mb-3 col-6">
+        <input required type="number" class="form-control" max="10000000" id="houseYear" name="year"
+          placeholder="House Year">
+        <label for="houseYear">House Year</label>
+      </div>
+
+      <div class="form-floating mb-3 col-12">
+        <input required type="text" class="form-control" id="houseimgUrl" name="imgUrl" placeholder="house imgUrl">
+        <label for="houseimgUrl">House Image Url</label>
+      </div>
+
+      <div class="form-floating">
+        <textarea required maxLength="144" class="form-control" placeholder="Please describe your house"
+          name="description" id="houseDescription" style="height: 100px"></textarea>
+        <label for="houseDescription">House Description</label>
+      </div>
+
+
+      <div class="text-end">
+        <button type="submit" class="btn btn-info">Create Listing</button>
+
+        <!-- NOTE after filling in the env.js... come and remove this from HTML -->
+        <!-- <section id="auth-template"> -->
+        <!-- TODO REMOVE THE AUTH TEMPLATE ONCE YOU VERIFY YOUR AUTH SETTINGS -->
+        <!-- <div class="container-fluid">
         <div class="row my-3">
           <div class="col-lg-5" id="auth-settings">
             <div class="card p-2 skeleton-loader">
@@ -67,12 +112,12 @@
       </div>
     </section> -->
 
-    <section id="router-view">
-      <!-- primary viewport -->
+        <section id="router-view">
+          <!-- primary viewport -->
 
 
 
-    </section>
+        </section>
 
 
   </main>

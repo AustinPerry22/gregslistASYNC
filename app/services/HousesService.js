@@ -1,6 +1,7 @@
 
 import { AppState } from "../AppState.js"
 import { House } from "../models/House.js"
+import { Pop } from "../utils/Pop.js"
 import { api } from "./AxiosService.js"
 
 const _sandboxApi = axios.create({
@@ -9,14 +10,30 @@ const _sandboxApi = axios.create({
 })
 
 class HousesService {
+
     constructor() {
         console.log("hello from the houzez service")
     }
 
     async getHouses() {
-        const response = await api.get('api/houses')
-        const mappedHouses = response.data.map(dataObj => new House(dataObj))
-        AppState.houses = mappedHouses
+        try {
+            const response = await api.get('api/houses')
+            const mappedHouses = response.data.map(dataObj => new House(dataObj))
+            AppState.houses = mappedHouses
+        } catch (error) {
+            Pop.error(error.message)
+        }
+    }
+
+    async createHouse(formData) {
+        try {
+            const res = await api.post('api/houses', formData)
+            const newHouse = new House(res.data)
+            AppState.houses.push(newHouse)
+            AppState.emit('houses')
+        } catch (error) {
+            Pop.error(error.message)
+        }
     }
 }
 
