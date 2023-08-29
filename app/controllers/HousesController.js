@@ -15,6 +15,7 @@ export class HousesController {
         console.log('hello from da housez controller')
         this.getHouses()
         AppState.on('houses', _drawHouses)
+        AppState.on('account', _drawHouses)
     }
 
     async getHouses() {
@@ -25,12 +26,21 @@ export class HousesController {
         }
     }
 
-    async createHouse(){
+    async createHouse() {
         try {
             window.event.preventDefault()
             const form = window.event.target
             let formData = getFormData(form)
             await housesService.createHouse(formData)
+        } catch (error) {
+            Pop.error(error.message)
+        }
+    }
+
+    async deleteHouse(houseId) {
+        try {
+            window.event.preventDefault()
+            await housesService.deleteHouse(houseId)
         } catch (error) {
             Pop.error(error.message)
         }

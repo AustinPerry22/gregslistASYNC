@@ -1,3 +1,5 @@
+import { AppState } from "../AppState.js"
+
 export class House {
     constructor(data) {
         this.id = data.id
@@ -13,6 +15,13 @@ export class House {
     }
 
     get template() {
-        return `${this.price}, ${this.description}`
+        return `${this.price}, ${this.description} ${this.computedDeleteButton}`
+    }
+
+    get computedDeleteButton() {
+        //debugger
+        if (AppState.account == null || AppState.account.id != this.creatorId) return ''
+
+        return `<button class="btn btn-danger" onclick="app.HousesController.deleteHouse('${this.id}')">delete</button>`
     }
 }

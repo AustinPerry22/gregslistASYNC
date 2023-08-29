@@ -35,6 +35,17 @@ class HousesService {
             Pop.error(error.message)
         }
     }
+
+    async deleteHouse(houseId) {
+        try {
+            debugger
+            const res = await api.delete(`api/houses/${houseId}`)
+            let updatedHouses = AppState.houses.filter(h => h.id != houseId)
+            AppState.houses = updatedHouses
+        } catch (error) {
+            Pop.error(error.message)
+        }
+    }
 }
 
 export const housesService = new HousesService()
