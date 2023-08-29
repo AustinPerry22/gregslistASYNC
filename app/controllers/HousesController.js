@@ -1,0 +1,26 @@
+import { AppState } from "../AppState.js"
+import { housesService } from "../services/HousesService.js"
+import { Pop } from "../utils/Pop.js"
+import { setHTML } from "../utils/Writer.js"
+
+function _drawHouses() {
+    let content = ''
+    AppState.houses.forEach(h => content += h.template)
+    setHTML('housesList', content)
+}
+
+export class HousesController {
+    constructor() {
+        console.log('hello from da housez controller')
+        this.getHouses()
+        AppState.on('houses', _drawHouses)
+    }
+
+    async getHouses() {
+        try {
+            await housesService.getHouses()
+        } catch (error) {
+            Pop.error(error.message)
+        }
+    }
+}
